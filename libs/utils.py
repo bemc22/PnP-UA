@@ -2,7 +2,7 @@ import os
 import cv2 
 import torch 
 
-from models.network_unet import UNetRes as net
+from DPIR.models.network_unet import UNetRes as net
 
 def load_img(img_path, img_size=256):
     img = cv2.imread(img_path)
