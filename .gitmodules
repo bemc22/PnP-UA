@@ -1,0 +1,3 @@
+[submodule "DPIR"]
+	path = DPIR
+	url = https://github.com/cszn/DPIR
