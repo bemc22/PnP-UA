@@ -70,7 +70,6 @@ def admm(y, denoiser, model, max_iters,  mx=1.0, epsilon=1.0, _lambda=1.0, gamma
         
 
         # initialize variables
-        iters = 1
         unwrapping_fn = Unwrapping(y, mx)
 
         u_t = torch.zeros_like(y)
@@ -100,7 +99,6 @@ def admm(y, denoiser, model, max_iters,  mx=1.0, epsilon=1.0, _lambda=1.0, gamma
 
             # update step
             u_t = u_t + x_t - v_t
-            iters += 1
 
 
         x_hat = v_t 
