@@ -1,9 +1,12 @@
 import os 
+import sys
 import torch 
 
 gpu_available = torch.cuda.is_available()
 DEVICE = 'cuda' if gpu_available else 'cpu'
 torch.set_default_tensor_type('torch.cuda.FloatTensor') if gpu_available else None
+
+sys.path.append(os.path.join(os.path.dirname(__file__), 'DPIR'))
 
 import cv2
 import matplotlib.pyplot as plt
@@ -41,7 +44,7 @@ model_pool = 'model_zoo'
 model = load_model(model_name, model_pool)
 model = model.to(DEVICE)
 
-img_est = admm(modulo_t, deep_denoiser, model, max_iters=max_iters, epsilon=epsilon, _lambda=_lambda, gamma=gamma)
+img_est = admm(modulo_t, deep_denoiser, model, max_iters=max_iters, epsilon=epsilon, _lambda=_lambda*epsilon, gamma=gamma)
 
 
 # Visualize
