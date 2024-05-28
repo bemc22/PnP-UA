@@ -20,7 +20,7 @@ centering  = lambda x: x - torch.mean(x, dim=(-1, -2), keepdim=True)
 img_size           = 1024
 wrapping_threshold = 64
 # recovert parameters
-max_iters = 3
+max_iters = 5
 epsilon   = 0.1
 _lambda   = 0.1
 gamma     = 1.1
@@ -31,7 +31,7 @@ img      = load_img(img_path, img_size)
 img_t     =  img2tensor(img) / wrapping_threshold
 
 # Modulo operation
-modulo_t  = modulo(img_t + torch.rand_like(img_t) * 0.5, 1.0).to(DEVICE) 
+modulo_t  = modulo(img_t + torch.rand_like(img_t) * 0.1, 1.0).to(DEVICE) 
 img_t     = centering(img_t).to(DEVICE) 
 
 
@@ -41,7 +41,7 @@ model_pool = 'model_zoo'
 model = load_model(model_name, model_pool)
 model = model.to(DEVICE)
 
-img_est = admm(img_t, deep_denoiser, model, max_iters=max_iters, epsilon=epsilon, _lambda=_lambda, gamma=gamma)
+img_est = admm(modulo_t, deep_denoiser, model, max_iters=max_iters, epsilon=epsilon, _lambda=_lambda, gamma=gamma)
 
 
 # Visualize
