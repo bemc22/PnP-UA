@@ -11,7 +11,7 @@ We use the DRUNet as deep denoiser, the model can be download from the [official
 - drunet_gray.pth  for grayscale images
 
 ## How to cite
-If this code is useful for your and you use it in an academic work, please consider citing this paper as
+If this code is useful for your research and you use it in an academic work, please consider citing this paper as
 
 
 ```bib
